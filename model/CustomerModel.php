@@ -14,7 +14,7 @@ class CustomerModel extends BaseModel
     public function store($data)
     {
 
-        $sql = "INSERT INTO `customer`( `name`, `email`, `address)
+        $sql = "INSERT INTO `customers`( `name`, `email`, `address`)
         VALUES (?,?,?)";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $data['name']);
@@ -24,7 +24,7 @@ class CustomerModel extends BaseModel
     }
     public function update($id, $data)
     {
-        $sql = "UPDATE `customer` SET `( `name`, `email`, `address)
+        $sql = "UPDATE `customers` SET `( `name`, `email`, `address`)
         VALUES (?,?,?)";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $data['name']);

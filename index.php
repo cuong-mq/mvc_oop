@@ -38,13 +38,12 @@ use Controller\CustomerController;
             case 'add':
                 $controller->store();
                 break;
-                case 'delete':
-                   
-                    $controller->delete();
+            case 'delete':
+                $controller->delete();
+                break;
+                case 'edit':
+                    $controller->edit();
                     break;
-                // case 'edit':
-                //     $controller->edit();
-                //     break;
             default:
                 $controller->index();
                 break;

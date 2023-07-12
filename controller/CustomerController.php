@@ -32,6 +32,7 @@ class CustomerController extends BaseController
                 "email" => $_POST["email"],
                 "address" => $_POST["address"],
             ];
+          
             $this->model->store($data);
             header("Location: index.php?page=add");
         }
@@ -39,39 +40,31 @@ class CustomerController extends BaseController
     public function delete()
     {
         $id = $_GET['id'];
-        // var_dump($id);
-        // die()  ;
         $this->model->delete($id);
         header('Location: index.php');
     }
 
-    // public function edit()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    //         $id = $_GET['id'];
-    //         $customer = $this->customerDB->get($id);
-    //         include 'view/edit.php';
-    //     } else {
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $id = $_GET['id'];
+            $data = $this->model->getById($id);
+            include 'view/edit.php';
+        } else {
 
-    //         // Validate dữ liệu
-    //         $errors = [];
-    //         $fields = ['name', 'email', 'address'];
-
-    //         foreach ($fields as $field) {
-    //             if (empty($_POST[$field])) {
-    //                 $errors[$field] = 'Không được để trống';
-    //             }
-    //         }
-
-    //         $id = $_POST['id'];
-    //         if (empty($errors)) {
-    //             $customer = new Customer($_POST['name'], $_POST['email'], $_POST['address']);
-    //             $this->customerDB->update($id, $customer);
-    //             header('Location: index.php');
-    //         } else {
-    //             $customer = $this->customerDB->get($id);
-    //             include 'view/edit.php';
-    //         }
-    //     }
-    // }
+            $id = $_POST['id'];
+            if (empty($errors)) {
+                $data = [
+                    "name" => $_POST["name"],
+                    "email" => $_POST["email"],
+                    "address" => $_POST["address"],
+                ];
+                $this->model->update($id, $data);
+                header('Location: index.php');
+            } else {
+                $data = $this->model->getById($id);
+                include 'view/edit.php';
+            }
+        }
+    }
 }
