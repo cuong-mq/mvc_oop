@@ -4,7 +4,7 @@ namespace Model;
 
 class CustomerModel extends BaseModel
 {
-    protected $table = "customer";
+    protected $table = "customers";
 
     public function __construct()
     {
@@ -14,7 +14,7 @@ class CustomerModel extends BaseModel
     public function store($data)
     {
 
-        $sql = "INSERT INTO `customer`( `name `, `email`, `address)
+        $sql = "INSERT INTO `customer`( `name`, `email`, `address)
         VALUES (?,?,?)";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $data['name']);
@@ -22,8 +22,9 @@ class CustomerModel extends BaseModel
         $stmt->bindParam(3, $data['address']);
         $stmt->execute();
     }
-    public function update($id, $data){
-    $sql ="UPDATE `customer` SET `( `name `, `email`, `address)
+    public function update($id, $data)
+    {
+        $sql = "UPDATE `customer` SET `( `name`, `email`, `address)
         VALUES (?,?,?)";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $data['name']);

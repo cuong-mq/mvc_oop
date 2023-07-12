@@ -2,8 +2,9 @@
 require "model/DBConnect.php";
 require "model/BaseModel.php";
 require "model/CustomerModel.php";
-require "controller/CustomerController.php";
 require "controller/BaseController.php";
+require "controller/CustomerController.php";
+
 
 use Controller\CustomerController;
 
@@ -37,9 +38,10 @@ use Controller\CustomerController;
             case 'add':
                 $controller->store();
                 break;
-                // case 'delete':
-                //     $controller->delete();
-                //     break;
+                case 'delete':
+                   
+                    $controller->delete();
+                    break;
                 // case 'edit':
                 //     $controller->edit();
                 //     break;

@@ -20,10 +20,10 @@
                         <?php foreach ($customers as $key => $customer) : ?>
                             <tr>
                                 <td><?php echo ++$key ?></td>
-                                <td><?php echo $customer->name ?></td>
-                                <td><?php echo $customer->email ?></td>
-                                <td><?php echo $customer->address ?></td>
-                                <td><a href="./index.php?page=delete&id=<?php echo $customer->id; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn chắc chắn muốn xoá?')">Delete</a>
+                                <td><?php echo $customer['name'] ?></td>
+                                <td><?php echo $customer['email'] ?></td>
+                                <td><?php echo $customer['address'] ?></td>
+                                <td><a href="./index.php?page=delete&id=<?php echo $customer['id']; ?>" class="btn btn-danger btn-sm" >Delete</a>
                                     <a href="./index.php?page=edit&id=<?php echo $customer->id; ?>" class="btn btn-primary btn-sm">Update</a>
                                 </td>
                             <?php endforeach; ?>
