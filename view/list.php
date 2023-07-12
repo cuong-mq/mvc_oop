@@ -23,8 +23,8 @@
                                 <td><?php echo $customer['name'] ?></td>
                                 <td><?php echo $customer['email'] ?></td>
                                 <td><?php echo $customer['address'] ?></td>
-                                <td><a href="./index.php?page=delete&id=<?php echo $customer['id']; ?>" class="btn btn-danger btn-sm" >Delete</a>
-                                    <a href="./index.php?page=edit&id=<?php echo $customer['id']; ?>" class="btn btn-primary btn-sm">Update</a>
+                                <td><a href="./index.php?page=delete&id=<?php echo $customer['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="./index.php?page=edit&id=<?php echo $customer['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
                                 </td>
                             <?php endforeach; ?>
                     </tbody>

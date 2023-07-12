@@ -24,8 +24,7 @@ class CustomerModel extends BaseModel
     }
     public function update($id, $data)
     {
-        $sql = "UPDATE `customers` SET `( `name`, `email`, `address`)
-        VALUES (?,?,?)";
+        $sql = "UPDATE `customers` SET  `name`=?, `email`=?, `address`=? where id = $id";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $data['name']);
         $stmt->bindParam(2, $data['email']);

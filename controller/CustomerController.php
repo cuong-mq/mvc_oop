@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Exception;
 use Model\BaseModel;
 use Model\CustomerModel;
 use Model\DBConnect;
@@ -32,7 +33,7 @@ class CustomerController extends BaseController
                 "email" => $_POST["email"],
                 "address" => $_POST["address"],
             ];
-          
+
             $this->model->store($data);
             header("Location: index.php?page=add");
         }
@@ -51,20 +52,15 @@ class CustomerController extends BaseController
             $data = $this->model->getById($id);
             include 'view/edit.php';
         } else {
+            $data = [
+                "name" => $_POST["name"],
+                "email" => $_POST["email"],
+                "address" => $_POST["address"],
+            ];
+            $id = $_GET['id'];
+            $this->model->update($id, $data);
 
-            $id = $_POST['id'];
-            if (empty($errors)) {
-                $data = [
-                    "name" => $_POST["name"],
-                    "email" => $_POST["email"],
-                    "address" => $_POST["address"],
-                ];
-                $this->model->update($id, $data);
-                header('Location: index.php');
-            } else {
-                $data = $this->model->getById($id);
-                include 'view/edit.php';
-            }
+            header('Location: index.php');
         }
     }
 }

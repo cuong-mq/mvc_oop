@@ -5,22 +5,21 @@
         </div>
         <div class="card-body">
             <div class="col-12">
-                <form method="post" action="./index.php?page=edit&id=<?php echo $customer->id ?>">
-                    <input type="hidden" name="id" value="<?php echo $customer->id; ?>" />
+                <form method="post">
                     <div class="mb-3">
                         <label class="form-label">Tên</label>
-                        <input type="text" value="<?php echo $customer->name; ?>" name="name" class="form-control">
-                    
+                        <input type="text" name="name" class="form-control">
+
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" value="<?php echo $customer->email; ?>" class="form-control" name="email">
-                      
+                        <input type="email" class="form-control" name="email">
+
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Địa chỉ</label>
-                        <input type="text" value="<?php echo $customer->address; ?>" class="form-control" name="address">
-                      
+                        <input type="text" class="form-control" name="address">
+
                     </div>
                     <button type="submit" class="btn btn-primary">Lưu</button>
                     <a type="button" href="index.php" class="btn btn-secondary">Quay lại</a>
