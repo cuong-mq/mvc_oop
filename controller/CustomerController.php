@@ -18,8 +18,10 @@ class CustomerController extends BaseController
         $this->model = new CustomerModel();
         parent::__construct($this->model);
     }
+
     public function index()
     {
+
         $customers = parent::index();
         include "view/list.php";
     }
@@ -35,14 +37,15 @@ class CustomerController extends BaseController
             ];
 
             $this->model->store($data);
-            header("Location: index.php?page=add");
+            // header("Location: index.php");
+            include "view/add.php";
         }
     }
     public function delete()
     {
         $id = $_GET['id'];
         $this->model->delete($id);
-        header('Location: index.php');
+        header('Location: http://localhost:3000/?c=CustomerController&a=index');
     }
 
     public function edit()
@@ -60,7 +63,7 @@ class CustomerController extends BaseController
             $id = $_GET['id'];
             $this->model->update($id, $data);
 
-            header('Location: index.php');
+            header('Location: http://localhost:3000/?c=CustomerController&a=index');
         }
     }
 }

@@ -6,9 +6,6 @@ require "controller/BaseController.php";
 require "controller/CustomerController.php";
 
 
-use Controller\CustomerController;
-
-
 ?>
 
 
@@ -32,22 +29,22 @@ use Controller\CustomerController;
             </div>
         </nav>
         <?php
-        $controller = new CustomerController();
-        $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : null;
-        switch ($page) {
-            case 'add':
-                $controller->store();
-                break;
-            case 'delete':
-                $controller->delete();
-                break;
-                case 'edit':
-                    $controller->edit();
-                    break;
-            default:
-                $controller->index();
-                break;
+        $a = isset($_REQUEST['a']) ? $_REQUEST['a'] : '';
+        $c = isset($_REQUEST['c']) ? "Controller\\" . $_REQUEST['c'] : '';
+        if (empty($a) || empty($c)) {
+            http_response_code(404);
+            header("Location: http://localhost:3000/error.php");
+            exit;
         }
+
+        $controller = new $c;
+        $methods = [
+            'add' => 'store',
+            'delete' => 'delete',
+            'edit' => 'edit',
+        ];
+        $method = isset($methods[$a]) ? $methods[$a] : 'index';
+        $controller->$method();
         ?>
     </div>
 </body>
